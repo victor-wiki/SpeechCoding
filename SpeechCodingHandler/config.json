@@ -1,0 +1,65 @@
+{
+  "Languages": [ "C#", "Java", "Python", "PHP", "C++", "C", "Objective-C", "JavaScript", "CSS", "HTML", "TSQL", "PLSQL", "MySQL" ],
+  "ControlWords": [
+    {
+      "Control": "brace",
+      "Word": "brace",
+      "UseCodeTemplate": true
+    },
+    {
+      "Control": "this",
+      "Word": "self"
+    },
+    {
+      "Control": ".",
+      "Word": "dot"
+    },
+    {
+      "Control": ",",
+      "Word": "comma"
+    },
+    {
+      "Control": ";",
+      "Word": "semicolon"
+    },
+    {
+      "Control": "=",
+      "Word": "equal"
+    },
+    {
+      "Control": "TryCatch",
+      "Word": "try catch",
+      "UseCodeTemplate": true
+    },
+    {
+      "Control": "TryCatchFinally",
+      "Word": "try catch finally",
+      "UseCodeTemplate": true
+    },
+    {
+      "Control": "RETURN",
+      "Word": "enter",
+      "IsKeyboard": true
+    },
+    {
+      "Control": "\"\"",
+      "Word": "double quotation mark"
+    },
+    {
+      "Control": "''",
+      "Word": "single quotation mark"
+    },
+    {
+      "Control": "[]",
+      "Word": "middle brackets"
+    },
+    {
+      "Control": "<>",
+      "Word": "angle brackets"
+    },
+    {
+      "Control": "()",
+      "Word": "parentheses"
+    }
+  ]
+}
