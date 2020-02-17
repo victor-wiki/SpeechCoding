@@ -2,7 +2,7 @@
 Coding by speech.
 
 This tool uses Microsoft.Speech to recognize speech and sends result to editor. You can load files to provide it the words for recognizing 
-,as well as define custom words. It also supports code template/snippet for different programing languages.
+,as well as define custom words. It also supports code template/snippet for several programing languages.
 
 ## Prerequisites
 * [Microsoft Speech Platform - Runtime (x64)](https://www.microsoft.com/en-us/download/details.aspx?id=27225)
