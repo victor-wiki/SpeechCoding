@@ -4,7 +4,7 @@ namespace SpeechCodingHandler
 {
     public class JavaInterpreter : LanguageInterpreter
     {
-        protected override string relativeFileExtension => ".jar;.java";
+        protected override string relativeFileExtension => ".jar";
         public override string Language => "Java";      
     }
 }
