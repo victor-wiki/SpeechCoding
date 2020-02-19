@@ -40,7 +40,7 @@ namespace SpeechCodingHandler
             if (packageDeclaration != null)
             {
                 this.packageName = packageDeclaration.getName().toString();
-               
+
                 javaFileInfo.PackageName = packageName;
 
                 packageObjInfo = new ObjectInfo() { Type = ObjectType.Namespace, Name = this.packageName };
@@ -106,7 +106,18 @@ namespace SpeechCodingHandler
                 if (member is FieldDeclaration)
                 {
                     FieldDeclaration fieldDeclaration = member as FieldDeclaration;
-                    string name = fieldDeclaration.getVariables().toArray().FirstOrDefault()?.ToString();
+                    string name = "";
+                    foreach (var field in fieldDeclaration.getVariables().toArray())
+                    {
+                        VariableDeclarator variable = field as VariableDeclarator;
+                        var children = variable.getChildrenNodes().toArray();
+                        if (children.Length > 0)
+                        {
+                            name = variable.getChildrenNodes().get(0).ToString();
+                            break;
+                        }
+                    }
+
                     if (!string.IsNullOrEmpty(name))
                     {
                         var fieldObj = new ObjectInfo() { Name = name, Type = ObjectType.Field, Parent = objectInfo };
