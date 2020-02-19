@@ -106,6 +106,7 @@ namespace SpeechCodingHandler
             {
                 namespaceObjInfo.Children.Add(classObjInfo);
                 classObjInfo.Parent = namespaceObjInfo;
+                classObjInfo.Assembly = this.assemblyName;
             }
 
             objectInfos.Add(classObjInfo);

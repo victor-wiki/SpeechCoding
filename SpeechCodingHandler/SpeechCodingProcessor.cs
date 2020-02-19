@@ -315,6 +315,11 @@ namespace SpeechCodingHandler
                         JarParser parser = new JarParser(referFilePath);
                         objectInfos.AddRange(parser.Parse());
                     }
+                    else if(extension==".java")
+                    {
+                        JavaFileParser parser = new JavaFileParser(referFilePath);
+                        objectInfos.AddRange(parser.Parse().ObjectInfos);
+                    }
                 }
             }
 

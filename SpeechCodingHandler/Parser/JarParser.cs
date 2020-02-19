@@ -50,8 +50,8 @@ namespace SpeechCodingHandler
             java.net.URLClassLoader loader = new java.net.URLClassLoader(urls);
             try
             {
-                ObjectInfo namespaceObj = new ObjectInfo() { Name = strNamespace, Type = ObjectType.Namespace, Assembly = assemblyName };
-                objectInfos.Add(namespaceObj);
+                ObjectInfo packageObjInfo = new ObjectInfo() { Name = strNamespace, Type = ObjectType.Namespace, Assembly = assemblyName };
+                objectInfos.Add(packageObjInfo);
 
                 List<Type> types = new List<Type>();
 
@@ -79,9 +79,9 @@ namespace SpeechCodingHandler
                         objType = ObjectType.Class;
                     }
 
-                    var objectInfo = new ObjectInfo() { Name = cl.getName(), Type = objType, Parent = namespaceObj, Assembly = assemblyName };
+                    var objectInfo = new ObjectInfo() { Name = cl.getName(), Type = objType, Parent = packageObjInfo, Assembly = assemblyName };
                     objectInfos.Add(objectInfo);
-                    namespaceObj.Children.Add(objectInfo);
+                    packageObjInfo.Children.Add(objectInfo);
 
                     foreach (var field in cl.getFields())
                     {
