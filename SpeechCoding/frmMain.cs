@@ -197,6 +197,8 @@ namespace SpeechCoding
 
         private void ShowSettingDialog()
         {
+            string oldLanguage = this.setting.PreferredLanguage;
+
             frmSetting frmSetting = new frmSetting();
             DialogResult result = frmSetting.ShowDialog();
             if (result == DialogResult.OK)
@@ -205,6 +207,13 @@ namespace SpeechCoding
 
                 this.processor.Dispose();
                 this.setting = SettingManager.GetSetting();
+
+                if (this.setting.PreferredLanguage != oldLanguage)
+                {
+                    this.loadedFilePaths.Clear();
+                    this.LoadFiles(Enumerable.Empty<string>());
+                }
+
                 this.InitProcessor();
             }
         }
@@ -396,7 +405,7 @@ namespace SpeechCoding
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.processor.OnSpeechSateChanged -= this.SpeechSateChanged;
-            this.processor.OnSpeechMessageReceived -= this.SpeechMessageReceived;           
+            this.processor.OnSpeechMessageReceived -= this.SpeechMessageReceived;
             this.processor.Dispose();
         }
     }
