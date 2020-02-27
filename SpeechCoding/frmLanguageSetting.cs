@@ -40,7 +40,7 @@ namespace SpeechCoding
                     setting.RelativeFileExtension = oldSetting.RelativeFileExtension;                                       
                 }
 
-                LanguageInterpreter interpreter = LanguageInterpreterHelper.GetInterpreter(language);
+                LanguageInterpreter interpreter = LanguageHelper.GetInterpreter(language);
 
                 setting.RelativeFileExtension = StringHelper.GetNotEmptyValue(oldSetting?.RelativeFileExtension, interpreter?.RelativeFileExtension);
 

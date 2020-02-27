@@ -21,7 +21,7 @@ namespace SpeechCodingHandler
 
         private Dictionary<GrammarType, string[]> dictGrammarWords = new Dictionary<GrammarType, string[]>();
         private LanguageInterpreter interpreter = null;
-        private List<string> needParsePlainTextFileExtensions = new List<string>() { ".cs", ".csproj" };
+        private List<string> needParsePlainTextFileExtensions = new List<string>() { ".cs", ".csproj", ".java", ".py", ".php", ".js", ".cpp", ".c" };
         public List<string> RelativeFileExtensions = new List<string>() { ".txt" };
 
         public Dictionary<GrammarType, string[]> GrammarWords => this.dictGrammarWords;
@@ -30,7 +30,7 @@ namespace SpeechCodingHandler
         {
             get
             {
-                return string.IsNullOrEmpty(this.Setting.PreferredLanguage) ? LanguageInterpreterHelper.CommonLanguage : this.Setting.PreferredLanguage;
+                return string.IsNullOrEmpty(this.Setting.PreferredLanguage) ? LanguageHelper.CommonLanguage : this.Setting.PreferredLanguage;
             }
         }
 
@@ -74,7 +74,7 @@ namespace SpeechCodingHandler
             }
 
             this.engine = new SpeechRecognitionEngine(new CultureInfo(this.cultureName));
-            this.interpreter = LanguageInterpreterHelper.GetInterpreter(this.Language);
+            this.interpreter = LanguageHelper.GetInterpreter(this.Language);
             if (this.interpreter != null)
             {
                 interpreter.Setting = this.Setting;
@@ -304,21 +304,25 @@ namespace SpeechCodingHandler
                             this.Feedback(MessageType.Warnning, MessageCode.Undefined, $"File \"{referFilePath}\" isn't a managed assembly.");
                         }
                     }
-                    else if (extension == ".cs")
-                    {
-                        CsharpFileParser parser = new CsharpFileParser(referFilePath);
-                        CsharpFileInfo info = parser.Parse();
-                        objectInfos.AddRange(CsharpFileParser.GetObjectInfos(info));
-                    }
                     else if (extension == ".jar")
                     {
                         JarParser parser = new JarParser(referFilePath);
                         objectInfos.AddRange(parser.Parse());
                     }
-                    else if(extension==".java")
+                    else if (extension == ".cs")
                     {
-                        JavaFileParser parser = new JavaFileParser(referFilePath);
-                        objectInfos.AddRange(parser.Parse().ObjectInfos);
+                        CsharpFileParser parser = new CsharpFileParser(referFilePath);
+                        CsharpFileInfo info = parser.Parse() as CsharpFileInfo;
+                        objectInfos.AddRange(CsharpFileParser.GetObjectInfos(info));
+                    }
+                    else
+                    {
+                        LanguageFileParser parser = LanguageHelper.GetFileParser(extension);
+                        if (parser != null)
+                        {
+                            parser.FilePath = referFilePath;
+                            objectInfos.AddRange(parser.Parse().ObjectInfos);
+                        }
                     }
                 }
             }

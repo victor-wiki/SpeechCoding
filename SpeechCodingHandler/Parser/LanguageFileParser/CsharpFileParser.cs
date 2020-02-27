@@ -9,18 +9,22 @@ using System.Linq;
 
 namespace SpeechCodingHandler
 {
-    public class CsharpFileParser
+    public class CsharpFileParser : LanguageFileParser
     {
         private string assemblyName;
-        public string FilePath { get; set; }
+
+        public override string FileExtension => ".cs";
+
         public bool IncludeNamespace { get; set; }
-        public CsharpFileParser(string filePath, bool includeNamespace = false)
-        {
-            this.FilePath = filePath;
+
+        public CsharpFileParser() : base() { }
+
+        public CsharpFileParser(string filePath, bool includeNamespace = false):base(filePath)
+        {           
             this.IncludeNamespace = includeNamespace;
         }
 
-        public CsharpFileInfo Parse()
+        public override LanguageFileInfo Parse()
         {
             CsharpFileInfo csharpFileInfo = new CsharpFileInfo();
             csharpFileInfo.FileInfo = new FileInfo(this.FilePath);

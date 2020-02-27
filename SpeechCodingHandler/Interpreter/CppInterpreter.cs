@@ -2,7 +2,7 @@
 
 namespace SpeechCodingHandler
 {
-    public class CplusInterpreter : LanguageInterpreter
+    public class CppInterpreter : LanguageInterpreter
     {
         protected override string relativeFileExtension => ".cpp";
         public override string Language => "C++";       

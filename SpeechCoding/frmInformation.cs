@@ -168,7 +168,7 @@ namespace SpeechCoding
                 int count = this.lvFiles.SelectedIndices.Count;
                 for (int i = this.lvFiles.SelectedIndices[count - 1]; i >= 0; i--)
                 {
-                    ListViewItem item = this.lvFiles.Items[this.lvFiles.SelectedIndices[i]];
+                    ListViewItem item = this.lvFiles.Items[i];
                     FileInfo file = item.Tag as FileInfo;
                     filePaths.Add(file.FullName);
 

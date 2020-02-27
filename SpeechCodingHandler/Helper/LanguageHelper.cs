@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace SpeechCodingHandler
 {
-    public class LanguageInterpreterHelper
+    public class LanguageHelper
     {
         public const string CommonLanguage = "Common";
 
@@ -29,6 +29,28 @@ namespace SpeechCodingHandler
             }
 
             return null;
-        }        
+        }
+
+        public static LanguageFileParser GetFileParser(string fileExtension)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var typeArray = assembly.ExportedTypes;
+
+            var types = (from type in typeArray
+                         where type.IsSubclassOf(typeof(LanguageFileParser))
+                         select type).ToList();
+
+            foreach (var type in types)
+            {
+                LanguageFileParser parser = (LanguageFileParser)Activator.CreateInstance(type);
+
+                if (parser.FileExtension == fileExtension)
+                {
+                    return parser;
+                }
+            }
+
+            return null;
+        }
     }
 }

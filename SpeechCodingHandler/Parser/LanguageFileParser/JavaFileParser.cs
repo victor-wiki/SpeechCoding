@@ -3,22 +3,22 @@ using japa.parser.ast;
 using japa.parser.ast.body;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace SpeechCodingHandler
 {
-    public class JavaFileParser
+    public class JavaFileParser: LanguageFileParser
     {
         private string packageName;
 
-        public string FilePath { get; set; }
+        public override string FileExtension => ".java";
 
-        public JavaFileParser(string filePath)
+        public JavaFileParser() : base() { }
+
+        public JavaFileParser(string filePath) : base(filePath)
         {
-            this.FilePath = filePath;
-        }
+        }       
 
-        public JavaFileInfo Parse()
+        public override LanguageFileInfo Parse()
         {
             JavaFileInfo javaFileInfo = new JavaFileInfo() { FileInfo = new FileInfo(this.FilePath) };
 
