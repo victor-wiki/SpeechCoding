@@ -59,6 +59,9 @@
     <PlatformTarget>x64</PlatformTarget>
     <OutputPath>bin\x64\Debug\</OutputPath>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>code.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CsvHelper, Version=15.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
       <HintPath>..\packages\CsvHelper.15.0.0\lib\net47\CsvHelper.dll</HintPath>
@@ -286,6 +289,7 @@
     <None Include="Resources\error_icon.ico" />
     <None Include="Resources\info_icon.ico" />
     <None Include="Resources\log.png" />
+    <Content Include="code.ico" />
     <Content Include="Resources\microphone_recording.png" />
   </ItemGroup>
   <ItemGroup>

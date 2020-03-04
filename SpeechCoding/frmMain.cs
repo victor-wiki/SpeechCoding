@@ -204,8 +204,7 @@ namespace SpeechCoding
             if (result == DialogResult.OK)
             {
                 UiHelper.SetUI(this);
-
-                this.processor.Dispose();
+               
                 this.setting = SettingManager.GetSetting();
 
                 if (this.setting.PreferredLanguage != oldLanguage)
@@ -213,6 +212,8 @@ namespace SpeechCoding
                     this.loadedFilePaths.Clear();
                     this.LoadFiles(Enumerable.Empty<string>());
                 }
+
+                this.processor.Dispose();
 
                 this.InitProcessor();
             }
