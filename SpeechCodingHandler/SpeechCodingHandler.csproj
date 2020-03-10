@@ -34,9 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr4.Runtime.Standard, Version=4.8.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>_lib\Antlr4.Runtime.Standard.dll</HintPath>
+    <Reference Include="Antlr4.Runtime.Standard, Version=4.8.0.0, Culture=neutral, PublicKeyToken=e78b2c5abd1fcb3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr4.Runtime.Standard.4.8.0\lib\net35\Antlr4.Runtime.Standard.dll</HintPath>
     </Reference>
     <Reference Include="CodeParser, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -349,7 +348,6 @@
     <Content Include="Keyword\TSQL.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="_lib\Antlr4.Runtime.Standard.dll" />
     <Content Include="_lib\CodeParser.dll" />
     <Content Include="_lib\javaparser-1.0.11.dll" />
     <Content Include="_lib\Microsoft.Speech.dll" />
