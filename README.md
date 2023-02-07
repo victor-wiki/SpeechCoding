@@ -13,9 +13,6 @@ This tool uses Microsoft.Speech to recognize speech and sends result to editor. 
 4. Load or drap(not for debuging mode) file to main form.
 5. Click start record button and let mouse cursor in the source code editor, and then speech.
 
-## Demonstration
-![Demonstration](https://github.com/victor-wiki/StaticResources/blob/master/StaticResources/images/projs/SpeechCoding/demonstration.gif?raw=true)
-
 ## UI-Setting
 ![Screenshot-setting](https://github.com/victor-wiki/StaticResources/blob/master/StaticResources/images/projs/SpeechCoding/setting.png?raw=true)
 
